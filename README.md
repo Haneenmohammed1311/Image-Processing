@@ -3,7 +3,7 @@
 # 🖼️ Image Processing with OpenCV
 
 **A hands-on reference notebook for the essential Computer Vision operations.**  
-Code + real outputs for every function — because GitHub doesn't render notebook images.
+Code + real outputs for every function 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1gxUt5MxeQyqHKL-RyystYJgRZJXCCRiH?usp=sharing)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat&logo=python&logoColor=white)
@@ -16,27 +16,26 @@ Code + real outputs for every function — because GitHub doesn't render noteboo
 
 ## 🌍 Why Do We Need Image Processing?
 
-Before any computer vision model can understand an image, the image usually needs to be **cleaned, transformed, and prepared**. That's what image processing is — the step between raw pixel data and meaningful insight.
+Before any computer vision model can understand an image, the image usually needs to be **cleaned, transformed, and prepared**. That's what image processing is: the step between raw pixel data and meaningful insight.
 
 Here are real examples where these exact functions are used every day:
 
 | Function | Real-World Application |
 |----------|----------------------|
-| **Grayscaling** | Medical X-ray analysis — color carries no diagnostic value, reducing channels speeds up processing |
-| **Blurring** | Autonomous vehicles — noise removal before lane line detection |
-| **Edge Detection** | Manufacturing quality control — detecting cracks or defects on a production line |
-| **Thresholding** | Document scanning apps (like CamScanner) — separating text from background |
-| **Morphological Ops** | Fingerprint recognition systems — thinning ridges to extract features |
-| **Histogram Equalization** | Satellite & aerial imaging — enhancing low-contrast terrain features |
-| **Color Spaces (HSV)** | Fruit sorting robots — detecting ripe vs unripe by hue regardless of lighting |
-| **Contour Detection** | Cell counting in biology — identifying and measuring individual cells under a microscope |
-| **Perspective Transform** | AR applications & document scanners — correcting a photographed page to look flat |
-| **Gamma Correction** | Camera pipelines — adjusting brightness for display on different screens |
-| **Resizing & Interpolation** | Deep learning pipelines — resizing all input images to a fixed size (e.g., 224×224) before feeding into a CNN |
-| **HOG Features** | Pedestrian detection in traffic systems — still used in real-time embedded cameras |
-| **Flipping** | Data augmentation — doubling a dataset cheaply before training a classifier |
+| **Grayscaling** | Medical X-ray analysis color carries no diagnostic value, reducing channels speeds up processing |
+| **Blurring** | Autonomous vehicles, noise removal before lane line detection |
+| **Edge Detection** | Manufacturing quality control , detecting cracks or defects on a production line |
+| **Thresholding** | Document scanning apps (like CamScanner)  separating text from background |
+| **Morphological Ops** | Fingerprint recognition systems thinning ridges to extract features |
+| **Histogram Equalization** | Satellite & aerial imaging enhancing low-contrast terrain features |
+| **Color Spaces (HSV)** | Fruit sorting robots detecting ripe vs unripe by hue regardless of lighting |
+| **Contour Detection** | Cell counting in biology identifying and measuring individual cells under a microscope |
+| **Perspective Transform** | AR applications & document scanners correcting a photographed page to look flat |
+| **Gamma Correction** | Camera pipelines adjusting brightness for display on different screens |
+| **Resizing & Interpolation** | Deep learning pipelines resizing all input images to a fixed size (e.g., 224×224) before feeding into a CNN |
+| **HOG Features** | Pedestrian detection in traffic systems still used in real-time embedded cameras |
+| **Flipping** | Data augmentation doubling a dataset cheaply before training a classifier |
 
-> 💡 Whether you're building a face recognition app, a crop disease detector, or a medical imaging tool — image processing is always the foundation.
 
 ---
 
@@ -82,7 +81,7 @@ plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 cv2.imwrite('output.jpg', img)
 ```
 
-> ⚠️ **BGR vs RGB:** OpenCV reads images in **BGR** order — always convert with `cv2.COLOR_BGR2RGB` before displaying with Matplotlib.
+> ⚠️ **BGR vs RGB:** OpenCV reads images in **BGR** order always convert with `cv2.COLOR_BGR2RGB` before displaying with Matplotlib.
 
 ![Original Image](images/original_rgb.png)
 
@@ -90,7 +89,7 @@ cv2.imwrite('output.jpg', img)
 
 ## 2. Grayscaling
 
-Converts `(H×W×3)` → `(H×W)` — required by many OpenCV functions like Canny, morphology, and thresholding.
+Converts `(H×W×3)` → `(H×W)` , required by many OpenCV functions like Canny, morphology, and thresholding.
 
 ```python
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)               # Method 1
@@ -153,7 +152,7 @@ rotated = cv2.warpAffine(img, M, (img.shape[1], img.shape[0]))
 
 ## 6. Edge Detection
 
-Auto-Canny automatically computes optimal thresholds from the image's median intensity — no manual tuning.
+Auto-Canny automatically computes optimal thresholds from the image's median intensity, no manual tuning.
 
 ```python
 def auto_canny(image, sigma=0.33):
@@ -171,7 +170,7 @@ def auto_canny(image, sigma=0.33):
 
 ## 7. Morphological Operations
 
-> ⚠️ Requires **grayscale or binary input** — not a 3-channel color image.
+> ⚠️ Requires **grayscale or binary input** , not a 3-channel color image.
 
 ```python
 kernel   = np.ones((5, 5), np.uint8)
@@ -200,7 +199,7 @@ both  = cv2.flip(img, -1)   # both axes
 
 ## 9. Cropping
 
-No special function — pure **NumPy array slicing**. Indexed as `[row, col]` = `[y, x]`.
+No special function , pure **NumPy array slicing**. Indexed as `[row, col]` = `[y, x]`.
 
 ```python
 cropped = img[start_row:end_row, start_col:end_col]
@@ -244,10 +243,10 @@ sharpened = cv2.filter2D(img, -1, kernel)
 Global thresholding **fails under uneven lighting**. Adaptive computes a local threshold per region.
 
 ```python
-# Otsu — finds optimal threshold automatically
+# Otsu : finds optimal threshold automatically
 _, otsu = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-# Adaptive — local threshold per block
+# Adaptive : local threshold per block
 adaptive = cv2.adaptiveThreshold(
     gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 5)
 ```
@@ -258,7 +257,7 @@ adaptive = cv2.adaptiveThreshold(
 
 ## 13. Histogram Equalization & CLAHE
 
-**CLAHE** applies equalization locally in tiles — preferred for medical images and low-light photography.
+**CLAHE** applies equalization locally in tiles preferred for medical images and low-light photography.
 
 ```python
 eq    = cv2.equalizeHist(gray)
@@ -360,23 +359,15 @@ features, hog_image = hog(
 
 ```
 📦 image-processing-opencv
- ┣ 📓 Image_Processing.ipynb    ← notebook (run on Colab for full outputs)
+ ┣ 📓 Image_Processing.ipynb    ← notebook ()
  ┣ 📄 README.md
  ┗ 📁 images/                   ← all output examples shown in this README
 ```
 
-> 🔗 **Full interactive notebook:** [Open in Google Colab](YOUR_COLAB_LINK_HERE)
+> 🔗 **Full interactive notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1gxUt5MxeQyqHKL-RyystYJgRZJXCCRiH?usp=sharing)
 
 ---
 
-## 🚧 Coming Next
-
-- [ ] Hough Line & Circle Transform
-- [ ] Template Matching
-- [ ] Image Segmentation (GrabCut, Watershed)
-- [ ] Feature Matching (SIFT, ORB)
-
----
 
 <div align="center">
 Made with ❤️ for the Computer Vision community
