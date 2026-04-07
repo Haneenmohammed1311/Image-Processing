@@ -5,7 +5,7 @@
 **A hands-on reference notebook for the essential Computer Vision operations.**  
 Code + real outputs for every function — because GitHub doesn't render notebook images.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](YOUR_COLAB_LINK_HERE)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([YOUR_COLAB_LINK_HERE](https://colab.research.google.com/drive/1gxUt5MxeQyqHKL-RyystYJgRZJXCCRiH?usp=sharing))
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat&logo=python&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?style=flat&logo=opencv&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
